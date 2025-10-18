@@ -1,4 +1,4 @@
-      // script.js untuk animasi dan interaktivitas Nuzzle Roast
+// script.js untuk animasi dan interaktivitas Nuzzle Roast
 
 // Fungsi untuk menampilkan waktu real-time
 function updateTime() {
@@ -9,15 +9,17 @@ function updateTime() {
         month: 'long', 
         day: 'numeric',
         hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit'
+        minute: '2-digit'
     };
     const timeString = now.toLocaleDateString('id-ID', options);
-    document.getElementById('timeDisplay').textContent = timeString;
+    const timeElements = document.querySelectorAll('.time-display');
+    timeElements.forEach(element => {
+        element.textContent = timeString;
+    });
 }
 
-// Update waktu setiap detik
-setInterval(updateTime, 1000);
+// Update waktu setiap menit
+setInterval(updateTime, 60000);
 updateTime(); // Panggil sekali saat halaman dimuat
 
 // Efek scroll header
@@ -30,17 +32,42 @@ window.addEventListener('scroll', function() {
     }
 });
 
+// Mobile menu functionality
+const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+const mobileNav = document.querySelector('.mobile-nav');
+const closeMenu = document.querySelector('.close-menu');
+const overlay = document.querySelector('.overlay');
+
+function openMobileMenu() {
+    mobileNav.classList.add('active');
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeMobileMenu() {
+    mobileNav.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+mobileMenuBtn.addEventListener('click', openMobileMenu);
+closeMenu.addEventListener('click', closeMobileMenu);
+overlay.addEventListener('click', closeMobileMenu);
+
 // Animasi scroll untuk menu navigasi
-document.querySelectorAll('nav a').forEach(anchor => {
+document.querySelectorAll('nav a, .mobile-nav a').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
         const targetId = this.getAttribute('href');
         const targetElement = document.querySelector(targetId);
         
-        window.scrollTo({
-            top: targetElement.offsetTop - 80,
-            behavior: 'smooth'
-        });
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: 'smooth'
+            });
+            closeMobileMenu();
+        }
     });
 });
 
@@ -92,44 +119,10 @@ document.querySelectorAll('.order-btn, .cta-button').forEach(button => {
     });
 });
 
-// Mobile menu functionality
-const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-const nav = document.querySelector('nav ul');
-
-mobileMenuBtn.addEventListener('click', function() {
-    nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
-    nav.style.flexDirection = 'column';
-    nav.style.position = 'absolute';
-    nav.style.top = '100%';
-    nav.style.left = '0';
-    nav.style.width = '100%';
-    nav.style.backgroundColor = 'rgba(245, 245, 220, 0.95)';
-    nav.style.backdropFilter = 'blur(10px)';
-    nav.style.padding = '1rem 0';
-    nav.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
-});
-
-// Close mobile menu when clicking on a link
-document.querySelectorAll('nav a').forEach(link => {
-    link.addEventListener('click', function() {
-        if (window.innerWidth <= 768) {
-            nav.style.display = 'none';
-        }
-    });
-});
-
 // Handle window resize
 window.addEventListener('resize', function() {
     if (window.innerWidth > 768) {
-        nav.style.display = 'flex';
-        nav.style.flexDirection = 'row';
-        nav.style.position = 'static';
-        nav.style.backgroundColor = 'transparent';
-        nav.style.backdropFilter = 'none';
-        nav.style.padding = '0';
-        nav.style.boxShadow = 'none';
-    } else {
-        nav.style.display = 'none';
+        closeMobileMenu();
     }
 });
 
@@ -138,8 +131,30 @@ window.addEventListener('load', function() {
     // Trigger scroll event to set initial header state
     window.dispatchEvent(new Event('scroll'));
     
-    // Set initial display for mobile menu
+    // Set initial state for mobile menu
     if (window.innerWidth <= 768) {
-        nav.style.display = 'none';
+        document.querySelector('nav ul').style.display = 'none';
+    }
+});
+
+// Tambahkan event listener untuk tombol "Lihat Menu" di hero section
+document.querySelector('.hero-buttons .cta-button.primary').addEventListener('click', function() {
+    const menuSection = document.getElementById('menu');
+    if (menuSection) {
+        window.scrollTo({
+            top: menuSection.offsetTop - 80,
+            behavior: 'smooth'
+        });
+    }
+});
+
+// Tambahkan event listener untuk tombol "Kunjungi Kami" di hero section
+document.querySelector('.hero-buttons .cta-button:not(.primary)').addEventListener('click', function() {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+        window.scrollTo({
+            top: contactSection.offsetTop - 80,
+            behavior: 'smooth'
+        });
     }
 });
