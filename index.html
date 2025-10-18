@@ -29,12 +29,31 @@
         
         <div class="time-display" id="timeDisplay"></div>
         
-        <button class="cta-button">Pesan Sekarang</button>
+        <button class="cta-button header-cta">Pesan Sekarang</button>
         
-        <button class="mobile-menu-btn">
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
             <i class="fas fa-bars"></i>
         </button>
     </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="close-menu" id="closeMenu">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul>
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#pamflet">Pamflet Menu</a></li>
+            <li><a href="#about">Tentang Kami</a></li>
+            <li><a href="#contact">Kontak</a></li>
+        </ul>
+        <button class="cta-button" style="margin-top: 2rem;">Pesan Sekarang</button>
+        <div class="time-display" style="margin-top: 1rem; text-align: center;" id="mobileTimeDisplay"></div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
@@ -42,8 +61,8 @@
             <h1>Rasa Kopi Terbaik untuk Hari-Harimu</h1>
             <p>Nikmati pengalaman ngopi yang berbeda dengan biji kopi pilihan dan suasana yang nyaman di Nuzzle Roast.</p>
             <div class="hero-buttons">
-                <button class="cta-button primary pulse">Lihat Menu</button>
-                <button class="cta-button">Kunjungi Kami</button>
+                <button class="cta-button primary pulse" id="lihatMenuBtn">Lihat Menu</button>
+                <button class="cta-button" id="kunjungiKamiBtn">Kunjungi Kami</button>
             </div>
         </div>
     </section>
@@ -54,21 +73,21 @@
             <h2>Menu Andalan Kami</h2>
         </div>
         
-    <div class="menu-grid">
-    <!-- Menu Item 1 -->
-    <div class="menu-item">
-        <div class="menu-img" style="background-image: url('https://i.ibb.co.com/YF35XtTS/Whats-App-Image-2025-10-18-at-17-16-35-6deb7176.jpg');"></div>
-        <div class="menu-content">
-            <h3>Waffle Ice Cream</h3>
-            <div class="menu-price">Rp 15.000</div>
-            <p>Renyahnya waffle, lembutnya ice cream – kombinasi klasik yang tak pernah gagal menemani waktu santai.</p>
-            <div class="menu-tags">
-                <span class="menu-tag">Manis</span>
-                <span class="menu-tag">Camilan</span>
+        <div class="menu-grid">
+            <!-- Menu Item 1 -->
+            <div class="menu-item">
+                <div class="menu-img" style="background-image: url('https://i.ibb.co.com/YF35XtTS/Whats-App-Image-2025-10-18-at-17-16-35-6deb7176.jpg');"></div>
+                <div class="menu-content">
+                    <h3>Waffle Ice Cream</h3>
+                    <div class="menu-price">Rp 15.000</div>
+                    <p>Renyahnya waffle, lembutnya ice cream – kombinasi klasik yang tak pernah gagal menemani waktu santai.</p>
+                    <div class="menu-tags">
+                        <span class="menu-tag">Manis</span>
+                        <span class="menu-tag">Camilan</span>
+                    </div>
+                    <button class="order-btn">Pesan Sekarang</button>
+                </div>
             </div>
-            <button class="order-btn">Pesan Sekarang</button>
-        </div>
-    </div>
             
             <!-- Menu Item 2 -->
             <div class="menu-item">
@@ -99,6 +118,20 @@
                     <button class="order-btn">Pesan Sekarang</button>
                 </div>
             </div>
+
+            <!-- Menu Item 4 -->
+            <div class="menu-item">
+                <div class="menu-img" style="background-image: url('https://i.ibb.co/Fq76gnYF/Chocolate-Croissant.jpg');"></div>
+                <div class="menu-content">
+                    <h3>Croissant</h3>
+                    <div class="menu-price">Rp 15.000</div>
+                    <p>Pastri Prancis yang renyah di luar dan lembut di dalam, sempurna untuk sarapan atau camilan.</p>
+                    <div class="menu-tags">
+                        <span class="menu-tag">Pastri</span>
+                        <span class="menu-tag">Sarapan</span>
+                    </div>
+                    <button class="order-btn">Pesan Sekarang</button>
+                </div>
             </div>
         </div>
     </section>
@@ -144,7 +177,7 @@
         <div class="about-content">
             <div class="about-text">
                 <h3>Kisah Kami</h3>
-                <p>Nuzzle Roast didirikan pada tahun 2025 dengan misi untuk menyajikan kopi berkualitas tinggi dengan suasana yang hangat dan nyaman. Kami memilih biji kopi terbaik dari berbagai daerah di Indonesia dan mengolahnya dengan teknik roasting yang tepat untuk menghasilkan cita rasa yang unik.</p>
+                <p>Nuzzle Roast didirikan pada tahun 2020 dengan misi untuk menyajikan kopi berkualitas tinggi dengan suasana yang hangat dan nyaman. Kami memilih biji kopi terbaik dari berbagai daerah di Indonesia dan mengolahnya dengan teknik roasting yang tepat untuk menghasilkan cita rasa yang unik.</p>
                 <p>Setiap cangkir kopi yang kami sajikan adalah hasil dari perjalanan panjang, mulai dari pemilihan biji, proses roasting, hingga penyajian yang sempurna oleh barista kami yang berpengalaman.</p>
                 
                 <div class="about-features">
@@ -296,12 +329,10 @@
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2025 Nuzzle Roast. All rights reserved.</p>
+            <p>&copy; 2023 Nuzzle Roast. All rights reserved.</p>
         </div>
     </footer>
 
-    <script src="script.js" ></script>
+    <script src="script.js"></script>
 </body>
 </html>
-
-
