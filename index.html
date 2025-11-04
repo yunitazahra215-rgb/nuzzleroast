@@ -63,14 +63,15 @@
         }
         
         .logo-img {
-            width: 70px;
-            height: 70px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             background-color: transparent;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            transition: var(--transition);
         }
         
         .logo-img img {
@@ -83,6 +84,7 @@
             font-size: 1.8rem;
             font-weight: 700;
             color: var(--primary-color);
+            transition: var(--transition);
         }
         
         .logo-text span {
@@ -121,7 +123,92 @@
         nav a:hover::after {
             width: 100%;
         }
-        
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-dark);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: var(--transition);
+            z-index: 1001;
+        }
+
+        .mobile-menu-btn:hover {
+            color: var(--primary-color);
+        }
+
+        /* Responsiveness untuk logo */
+        @media (max-width: 480px) {
+            .logo-img {
+                width: 35px;
+                height: 35px;
+            }
+            .logo-text {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo-img {
+                width: 40px;
+                height: 40px;
+            }
+            .logo-text {
+                font-size: 1.5rem;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: rgba(245, 245, 220, 0.95);
+                backdrop-filter: blur(10px);
+                padding: 1rem;
+                gap: 1rem;
+                box-shadow: var(--shadow);
+                z-index: 999;
+            }
+            nav ul.show {
+                display: flex;
+            }
+            nav a {
+                padding: 0.5rem 0;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                display: block;
+            }
+            nav a:last-child {
+                border-bottom: none;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 992px) {
+            .logo-img {
+                width: 55px;
+                height: 55px;
+            }
+            .logo-text {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (min-width: 993px) {
+            .logo-img {
+                width: 60px;
+                height: 60px;
+            }
+            .logo-text {
+                font-size: 2rem;
+            }
+        }
+
         .time-display {
             font-size: 0.9rem;
             color: var(--primary-color);
@@ -129,6 +216,7 @@
             background: rgba(139, 0, 0, 0.1);
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
+            text-align: center;
         }
         
         .cta-button {
@@ -460,7 +548,129 @@
             color: var(--accent-color);
             font-weight: 600;
         }
+
+        /* Order Form Section */
+        .order-form-section {
+            background: linear-gradient(135deg, var(--secondary-color), #f0f0e0);
+            padding: 5rem 5%;
+        }
+
+        .order-form-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+            padding: 4rem 3rem;
+        }
+
+        .order-form-title {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+            font-weight: 700;
+        }
+
+        .order-form-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        /* Form Pemesanan */
+        .order-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
         
+        .form-full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .form-group label {
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+        
+        .form-control {
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: #fff;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 204, 59, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        select.form-control {
+            height: auto;
+            min-height: 120px;
+        }
+        
+        .form-group small {
+            color: #666;
+            font-size: 0.85rem;
+            margin-top: 0.3rem;
+        }
+        
+        .order-summary {
+            background-color: var(--secondary-color);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1.5rem;
+        }
+        
+        .order-summary h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            font-size: 1.3rem;
+        }
+        
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            padding: 0.3rem 0;
+        }
+        
+        .order-total {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #ddd;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--accent-color);
+        }
+
         /* About Section */
         .about {
             background-color: var(--secondary-color);
@@ -543,35 +753,6 @@
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
-        }
-        
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-        
-        .form-group label {
-            font-weight: 500;
-        }
-        
-        .form-control {
-            padding: 0.8rem 1rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-        
-        .form-control:focus {
-            border-color: var(--primary-color);
-            outline: none;
-            box-shadow: 0 0 0 2px rgba(139, 0, 0, 0.2);
-        }
-        
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
         }
         
         /* Footer */
@@ -754,6 +935,14 @@
             .pamflet-container {
                 padding: 2rem 1rem;
             }
+            
+            .order-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .order-form-container {
+                padding: 2rem 1.5rem;
+            }
         }
         
         @media (max-width: 576px) {
@@ -780,266 +969,10 @@
             .item-price {
                 font-size: 1.5rem;
             }
-        }
-        
-        /* Fitur Baru: Formulir Pemesanan */
-        .order-form-section {
-            background-color: var(--secondary-color);
-            padding: 5rem 5%;
-        }
-        
-        .order-form-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            padding: 3rem;
-        }
-        
-        .order-form-title {
-            text-align: center;
-            margin-bottom: 2rem;
-            color: var(--primary-color);
-            font-size: 2rem;
-        }
-        
-        .order-form {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-        
-        .form-full-width {
-            grid-column: 1 / -1;
-        }
-        
-        .order-summary {
-            background-color: var(--secondary-color);
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin-top: 1.5rem;
-        }
-        
-        .order-summary h3 {
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-        
-        .order-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-        }
-        
-        .order-total {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid #ddd;
-            font-weight: bold;
-            font-size: 1.2rem;
-            color: var(--accent-color);
-        }
-        
-        /* Fitur Baru: Galeri Foto/Video */
-        .gallery-section {
-            background-color: white;
-            padding: 5rem 5%;
-        }
-        
-        .gallery-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        .gallery-item {
-            position: relative;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            height: 250px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-        }
-        
-        .gallery-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-        
-        .gallery-item:hover .gallery-img {
-            transform: scale(1.05);
-        }
-        
-        .gallery-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
-            padding: 1rem;
-            color: white;
-            transform: translateY(100%);
-            transition: var(--transition);
-        }
-        
-        .gallery-item:hover .gallery-overlay {
-            transform: translateY(0);
-        }
-        
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
-            overflow: hidden;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-        }
-        
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        
-        /* Fitur Baru: Testimoni Pelanggan */
-        .testimonials-section {
-            background-color: var(--secondary-color);
-            padding: 5rem 5%;
-        }
-        
-        .testimonials-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .testimonial-card {
-            background-color: white;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.8s ease forwards;
-        }
-        
-        .testimonial-card:nth-child(1) { animation-delay: 0.1s; }
-        .testimonial-card:nth-child(2) { animation-delay: 0.2s; }
-        .testimonial-card:nth-child(3) { animation-delay: 0.3s; }
-        
-        .testimonial-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-        
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-        
-        .testimonial-text::before {
-            content: '"';
-            font-size: 3rem;
-            color: var(--primary-color);
-            position: absolute;
-            top: -20px;
-            left: -10px;
-            opacity: 0.3;
-        }
-        
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: var(--secondary-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-color);
-            font-weight: bold;
-        }
-        
-        .author-info h4 {
-            color: var(--primary-color);
-            margin-bottom: 0.2rem;
-        }
-        
-        .author-info p {
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
-        .rating {
-            color: var(--accent-color);
-            margin-top: 0.5rem;
-        }
-        
-        /* Modal untuk galeri */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .modal-content {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        
-        .modal-img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: white;
-            font-size: 2rem;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        
-        .close-modal:hover {
-            color: var(--primary-color);
+            
+            .order-form-title {
+                font-size: 1.8rem;
+            }
         }
         
         /* Notifikasi */
@@ -1060,28 +993,6 @@
         .notification.show {
             transform: translateX(0);
         }
-
-        /* Logo di semua bagian */
-        .logo-large {
-            width: 150px;
-            height: 150px;
-            margin: 0 auto 2rem;
-            display: block;
-        }
-
-        .logo-medium {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 1.5rem;
-            display: block;
-        }
-
-        .logo-small {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1rem;
-            display: block;
-        }
     </style>
 </head>
 <body>
@@ -1091,11 +1002,11 @@
             <div class="logo-img">
                 <img src="https://i.ibb.co.com/4R846vsQ/Blue-and-Beige-Simple-Cute-Typographic-Coffee-Cup-Cafe-Logo-6.png" alt="Nuzzle Roast Logo">
             </div>
-            <div class="logo-text">NUZZLE <span>ROAST</span></div>
+            <!-- /<div class="logo-text">NUZZLE ROAST</span></div> -->
         </div>
         
         <nav>
-            <ul>
+            <ul id="nav-menu">
                 <li><a href="#home">Beranda</a></li>
                 <li><a href="#menu">Menu</a></li>
                 <li><a href="#pamflet">Pamflet Menu</a></li>
@@ -1111,7 +1022,7 @@
         
         <button class="cta-button">Pesan Sekarang</button>
         
-        <button class="mobile-menu-btn">
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
             <i class="fas fa-bars"></i>
         </button>
     </header>
@@ -1119,10 +1030,7 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <div class="logo-large">
-                <img src="https://i.ibb.co.com/4R846vsQ/Blue-and-Beige-Simple-Cute-Typographic-Coffee-Cup-Cafe-Logo-6.png" alt="Nuzzle Roast Logo">
-            </div>
-            <h1>Rasa Kopi Terbaik untuk Hari-Harimu</h1>
+            <h1>Nuzzle Roast – Kopi Premium dengan Rasa Autentik untuk Hari-Harimu</h1>
             <p>Nikmati pengalaman ngopi yang berbeda dengan biji kopi pilihan dan suasana yang nyaman di Nuzzle Roast.</p>
             <div class="hero-buttons">
                 <button class="cta-button primary pulse">Lihat Menu</button>
@@ -1134,9 +1042,6 @@
     <!-- Menu Section -->
     <section class="menu" id="menu">
         <div class="section-title">
-            <div class="logo-medium">
-                <img src="https://i.ibb.co.com/4R846vsQ/Blue-and-Beige-Simple-Cute-Typographic-Coffee-Cup-Cafe-Logo-6.png" alt="Nuzzle Roast Logo">
-            </div>
             <h2>Menu Andalan Kami</h2>
         </div>
         
@@ -1173,31 +1078,31 @@
             
             <!-- Menu Item 3 -->
             <div class="menu-item">
-                <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1561047029-3000c68339ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80');"></div>
+                <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1299&q=80');"></div>
                 <div class="menu-content">
-                    <h3>Cappuccino</h3>
-                    <div class="menu-price">Rp 18.000</div>
-                    <p>Perpaduan sempurna antara espresso, steamed milk, dan foam yang lembut.</p>
+                    <h3>Burger Special</h3>
+                    <div class="menu-price">Rp 25.000</div>
+                    <p>Burger dengan daging sapi pilihan, sayuran segar, dan saus spesial racikan Nuzzle Roast.</p>
                     <div class="menu-tags">
-                        <span class="menu-tag">Kopi</span>
-                        <span class="menu-tag">Susu</span>
+                        <span class="menu-tag">Makanan</span>
+                        <span class="menu-tag">Gurih</span>
                     </div>
-                    <button class="order-btn" data-item="Cappuccino" data-price="18000">Pesan Sekarang</button>
+                    <button class="order-btn" data-item="Burger Special" data-price="25000">Pesan Sekarang</button>
                 </div>
             </div>
             
             <!-- Menu Item 4 -->
             <div class="menu-item">
-                <div class="menu-img" style="background-image: url('https://i.ibb.co/Fq76gnYF/Chocolate-Croissant.jpg');"></div>
+                <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1572490122747-3968b75cc699?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
                 <div class="menu-content">
                     <h3>Croissant</h3>
-                    <div class="menu-price">Rp 15.000</div>
+                    <div class="menu-price">Rp 12.000</div>
                     <p>Pastri Prancis yang renyah di luar dan lembut di dalam, sempurna untuk sarapan atau camilan.</p>
                     <div class="menu-tags">
                         <span class="menu-tag">Pastri</span>
                         <span class="menu-tag">Sarapan</span>
                     </div>
-                    <button class="order-btn" data-item="Croissant" data-price="15000">Pesan Sekarang</button>
+                    <button class="order-btn" data-item="Croissant" data-price="12000">Pesan Sekarang</button>
                 </div>
             </div>
         </div>
@@ -1207,227 +1112,106 @@
     <section class="pamflet-menu" id="pamflet">
         <div class="pamflet-container">
             <div class="pamflet-header">
-                <div class="logo-medium">
-                    <img src="https://i.ibb.co.com/4R846vsQ/Blue-and-Beige-Simple-Cute-Typographic-Coffee-Cup-Cafe-Logo-6.png" alt="Nuzzle Roast Logo">
-                </div>
                 <h1 class="pamflet-title">NUZZLE ROAST</h1>
-                <h2 class="pamflet-subtitle">Menu</h2>
+                <h2 class="pamflet-subtitle">MENU SPESIAL</h2>
+                <p class="time-display" id="pamfletTime"></p>
             </div>
             
             <div class="menu-items">
-                <!-- Menu Item 1 dari Pamflet -->
                 <div class="menu-item-pamflet">
-                    <h3 class="item-name special">WAFFLE ICE CREAM</h3>
+                    <h3 class="item-name">Waffle Ice Cream</h3>
                     <p class="item-description">Renyahnya waffle, lembutnya ice cream – kombinasi klasik yang tak pernah gagal menemani waktu santai.</p>
-                    <div class="item-price">15K</div>
+                    <div class="item-price">Rp 15.000</div>
                 </div>
                 
-                <!-- Menu Item 2 dari Pamflet -->
                 <div class="menu-item-pamflet">
-                    <h3 class="item-name special">COFFEE - Laile</h3>
-                    <p class="item-description">"Kopi, minuman legendaris dari Ethiopia yang kini jadi sahabat setiap pagi – hangat, harum, dan selalu menenangkan.</p>
-                    <div class="item-price">10K</div>
+                    <h3 class="item-name">Espresso</h3>
+                    <p class="item-description">Kopi murni dengan rasa yang kuat dan aroma yang khas, cocok untuk para pecinta kopi sejati.</p>
+                    <div class="item-price">Rp 18.000</div>
+                </div>
+                
+                <div class="menu-item-pamflet">
+                    <h3 class="item-name">Burger Special</h3>
+                    <p class="item-description">Burger dengan daging sapi pilihan, sayuran segar, dan saus spesial racikan Nuzzle Roast.</p>
+                    <div class="item-price">Rp 25.000</div>
+                </div>
+                
+                <div class="menu-item-pamflet">
+                    <h3 class="item-name">Croissant</h3>
+                    <p class="item-description">Pastri Prancis yang renyah di luar dan lembut di dalam, sempurna untuk sarapan atau camilan.</p>
+                    <div class="item-price">Rp 12.000</div>
+                </div>
+                
+                <div class="menu-item-pamflet">
+                    <h3 class="item-name special">Nuzzle Special Blend</h3>
+                    <p class="item-description">Kopi racikan khusus Nuzzle Roast dengan cita rasa yang unik dan aroma yang menggoda.</p>
+                    <div class="item-price">Rp 22.000</div>
                 </div>
             </div>
             
             <div class="pamflet-footer">
-                <h3 class="pamflet-footer-title">NUZZLE ROAST</h3>
-                <p class="contact-info">+62 812-8320-8200</p>
-                <p class="website">www.nuzleroast.com</p>
+                <h3 class="pamflet-footer-title">Kunjungi Kami</h3>
+                <p class="contact-info">Jl. Kopi Aroma No. 123, Jakarta</p>
+                <p class="contact-info">Buka setiap hari: 07.00 - 22.00 WIB</p>
+                <p class="contact-info">Telp: (021) 1234-5678</p>
+                <p class="website">www.nuzzleroast.com</p>
             </div>
         </div>
     </section>
 
-    <!-- Galeri Foto/Video Section -->
-    <section class="gallery-section" id="gallery">
-        <div class="section-title">
-            <div class="logo-medium">
-                <img src="https://i.ibb.co.com/4R846vsQ/Blue-and-Beige-Simple-Cute-Typographic-Coffee-Cup-Cafe-Logo-6.png" alt="Nuzzle Roast Logo">
-            </div>
-            <h2>Galeri Kami</h2>
-        </div>
-        
-        <div class="gallery-container">
-            <!-- Foto 1 -->
-            <div class="gallery-item" data-src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1147&q=80">
-                <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Interior Cafe" class="gallery-img">
-                <div class="gallery-overlay">
-                    <h3>Interior Cafe</h3>
-                    <p>Suasana nyaman di Nuzzle Roast</p>
-                </div>
-            </div>
-            
-            <!-- Foto 2 -->
-            <div class="gallery-item" data-src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80">
-                <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Barista Sedang Bekerja" class="gallery-img">
-                <div class="gallery-overlay">
-                    <h3>Barista Kami</h3>
-                    <p>Menyajikan kopi dengan penuh perhatian</p>
-                </div>
-            </div>
-            
-            <!-- Foto 3 -->
-            <div class="gallery-item" data-src="https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80">
-                <img src="https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Espresso" class="gallery-img">
-                <div class="gallery-overlay">
-                    <h3>Espresso</h3>
-                    <p>Kopi murni dengan rasa yang kuat</p>
-                </div>
-            </div>
-            
-            <!-- Foto 4 -->
-            <div class="gallery-item" data-src="https://i.ibb.co/pvyqPqbr/Delicious-AI-Generated-Waffle-with-Strawberries-and-Whipped-Cream-Stock-Image.jpg">
-                <img src="https://i.ibb.co/pvyqPqbr/Delicious-AI-Generated-Waffle-with-Strawberries-and-Whipped-Cream-Stock-Image.jpg" alt="Waffle Ice Cream" class="gallery-img">
-                <div class="gallery-overlay">
-                    <h3>Waffle Ice Cream</h3>
-                    <p>Kombinasi sempurna untuk camilan</p>
-                </div>
-            </div>
-            
-            <!-- Video -->
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/1PGRE7Lx6L4" title="Coffee Making Process" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimoni Pelanggan Section -->
-    <section class="testimonials-section" id="testimonials">
-        <div class="section-title">
-            <div class="logo-medium">
-                <img src="https://i.ibb.co.com/4R846vsQ/Blue-and-Beige-Simple-Cute-Typographic-Coffee-Cup-Cafe-Logo-6.png" alt="Nuzzle Roast Logo">
-            </div>
-            <h2>Testimoni Pelanggan</h2>
-        </div>
-        
-        <div class="testimonials-container">
-            <div class="testimonials-grid">
-                <!-- Testimoni 1 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        Kopi di Nuzzle Roast benar-benar spesial! Aromanya harum dan rasanya tidak pernah mengecewakan. Tempatnya juga nyaman untuk nongkrong atau bekerja.
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">A</div>
-                        <div class="author-info">
-                            <h4>Andi Pratama</h4>
-                            <p>Pelanggan Setia</p>
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Testimoni 2 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        Waffle ice cream-nya enak banget! Renyah di luar, lembut di dalam. Pelayanannya juga cepat dan ramah. Recommended buat yang suka ngopi sambil nyemil.
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">S</div>
-                        <div class="author-info">
-                            <h4>Sari Dewi</h4>
-                            <p>Pengunjung Rutin</p>
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Testimoni 3 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        Suasana di sini sangat cozy, cocok untuk meeting kecil-kecilan atau sekedar menghabiskan waktu sendirian. Wi-Fi-nya juga kenceng, jadi enak buat kerja.
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">R</div>
-                        <div class="author-info">
-                            <h4>Rizki Maulana</h4>
-                            <p>Freelancer</p>
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Formulir Pemesanan Section -->
+    <!-- Formulir Pemesanan -->
     <section class="order-form-section" id="order">
         <div class="section-title">
-            <div class="logo-medium">
-                <img src="https://i.ibb.co.com/4R846vsQ/Blue-and-Beige-Simple-Cute-Typographic-Coffee-Cup-Cafe-Logo-6.png" alt="Nuzzle Roast Logo">
-            </div>
             <h2>Formulir Pemesanan</h2>
         </div>
-        
         <div class="order-form-container">
             <h3 class="order-form-title">Pesan Menu Favoritmu</h3>
-            
-            <form id="orderForm" class="order-form">
+            <form class="order-form" id="orderForm">
                 <div class="form-group">
-                    <label for="customerName">Nama Lengkap</label>
-                    <input type="text" id="customerName" class="form-control" required>
+                    <label for="name">Nama Lengkap</label>
+                    <input type="text" id="name" class="form-control" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="customerPhone">Nomor Telepon</label>
-                    <input type="tel" id="customerPhone" class="form-control" required>
+                    <label for="phone">Nomor Telepon</label>
+                    <input type="tel" id="phone" class="form-control" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="customerEmail">Email</label>
-                    <input type="email" id="customerEmail" class="form-control" required>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="form-control" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="orderDate">Tanggal Pemesanan</label>
-                    <input type="date" id="orderDate" class="form-control" required>
+                    <label for="date">Tanggal Pemesanan</label>
+                    <input type="date" id="date" class="form-control" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="orderTime">Waktu Pengambilan</label>
-                    <input type="time" id="orderTime" class="form-control" required>
+                    <label for="time">Waktu Pengambilan</label>
+                    <input type="time" id="time" class="form-control" required>
                 </div>
                 
                 <div class="form-group form-full-width">
-                    <label for="orderItems">Pilih Menu</label>
-                    <select id="orderItems" class="form-control" multiple>
+                    <label for="items">Pilih Menu</label>
+                    <select id="items" class="form-control" multiple>
                         <option value="Waffle Ice Cream" data-price="15000">Waffle Ice Cream - Rp 15.000</option>
                         <option value="Espresso" data-price="18000">Espresso - Rp 18.000</option>
-                        <option value="Cappuccino" data-price="18000">Cappuccino - Rp 18.000</option>
-                        <option value="Croissant" data-price="15000">Croissant - Rp 15.000</option>
-                        <option value="Coffee Laile" data-price="10000">Coffee Laile - Rp 10.000</option>
+                        <option value="Burger Special" data-price="25000">Burger Special - Rp 25.000</option>
+                        <option value="Croissant" data-price="12000">Croissant - Rp 12.000</option>
+                        <option value="Nuzzle Special Blend" data-price="22000">Nuzzle Special Blend - Rp 22.000</option>
                     </select>
-                    <small>Gunakan Ctrl (Windows) atau Cmd (Mac) untuk memilih beberapa item</small>
+                    <small>Gunakan Ctrl (Windows) atau Cmd (Mac) untuk memilih beberapa menu</small>
                 </div>
                 
                 <div class="form-group form-full-width">
-                    <label for="specialInstructions">Instruksi Khusus</label>
-                    <textarea id="specialInstructions" class="form-control" placeholder="Contoh: Kurangi gula, tambah es, dll."></textarea>
+                    <label for="notes">Catatan Tambahan</label>
+                    <textarea id="notes" class="form-control" placeholder="Contoh: Kurangi gula, tambah es, dll."></textarea>
                 </div>
                 
                 <div class="order-summary">
                     <h3>Ringkasan Pesanan</h3>
-                    <div id="orderSummary">
-                        <p>Pilih menu untuk melihat ringkasan</p>
-                    </div>
+                    <div id="orderItems"></div>
                     <div class="order-total">
                         <span>Total:</span>
                         <span id="orderTotal">Rp 0</span>
@@ -1439,152 +1223,17 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="section-title">
-            <div class="logo-medium">
-                <img src="https://i.ibb.co.com/4R846vsQ/Blue-and-Beige-Simple-Cute-Typographic-Coffee-Cup-Cafe-Logo-6.png" alt="Nuzzle Roast Logo">
-            </div>
-            <h2>Tentang Nuzzle Roast</h2>
-        </div>
-        
-        <div class="about-content">
-            <div class="about-text">
-                <h3>Kisah Kami</h3>
-                <p>Nuzzle Roast didirikan pada tahun 2020 dengan misi untuk menyajikan kopi berkualitas tinggi dengan suasana yang hangat dan nyaman. Kami memilih biji kopi terbaik dari berbagai daerah di Indonesia dan mengolahnya dengan teknik roasting yang tepat untuk menghasilkan cita rasa yang unik.</p>
-                <p>Setiap cangkir kopi yang kami sajikan adalah hasil dari perjalanan panjang, mulai dari pemilihan biji, proses roasting, hingga penyajian yang sempurna oleh barista kami yang berpengalaman.</p>
-                
-                <div class="about-features">
-                    <div class="feature">
-                        <i class="fas fa-coffee"></i>
-                        <div>
-                            <h4>Biji Kopi Pilihan</h4>
-                            <p>Dari perkebunan terbaik di Indonesia</p>
-                        </div>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-leaf"></i>
-                        <div>
-                            <h4>Ramah Lingkungan</h4>
-                            <p>Menggunakan kemasan yang dapat didaur ulang</p>
-                        </div>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-award"></i>
-                        <div>
-                            <h4>Barista Berpengalaman</h4>
-                            <p>Dilatih secara profesional</p>
-                        </div>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-heart"></i>
-                        <div>
-                            <h4>Dibuat dengan Cinta</h4>
-                            <p>Setiap sajian penuh perhatian</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="about-img" style="background-image: url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1147&q=80');"></div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="section-title">
-            <div class="logo-medium">
-                <img src="https://i.ibb.co.com/4R846vsQ/Blue-and-Beige-Simple-Cute-Typographic-Coffee-Cup-Cafe-Logo-6.png" alt="Nuzzle Roast Logo">
-            </div>
-            <h2>Hubungi Kami</h2>
-        </div>
-        
-        <div class="contact-content">
-            <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div>
-                        <h3>Lokasi</h3>
-                        <p>Jl. Kopi Indah No. 55, Jakarta Selatan</p>
-                    </div>
-                </div>
-                
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <div>
-                        <h3>Telepon</h3>
-                        <p>+62 857-7914-2230</p>
-                    </div>
-                </div>
-                
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <div>
-                        <h3>Email</h3>
-                        <p>nuzleroast@gmail.com</p>
-                    </div>
-                </div>
-                
-                <div class="contact-item">
-                    <i class="fas fa-clock"></i>
-                    <div>
-                        <h3>Jam Operasional</h3>
-                        <p>Senin - Minggu: 07.00 - 22.00 WIB</p>
-                    </div>
-                </div>
-                
-                <div class="contact-item">
-                    <i class="fas fa-globe"></i>
-                    <div>
-                        <h3>Website</h3>
-                        <p>www.nuzzleroast.com</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="contact-form">
-                <h3>Kirim Pesan</h3>
-                <form id="messageForm">
-                    <div class="form-group">
-                        <label for="name">Nama Lengkap</label>
-                        <input type="text" id="name" class="form-control" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" class="form-control" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="subject">Subjek</label>
-                        <input type="text" id="subject" class="form-control" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Pesan</label>
-                        <textarea id="message" class="form-control" required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="cta-button">Kirim Pesan</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-about">
                 <div class="footer-logo">NUZZLE <span>ROAST</span></div>
-                <div class="logo-small">
-                    <img src="https://i.ibb.co.com/4R846vsQ/Blue-and-Beige-Simple-Cute-Typographic-Coffee-Cup-Cafe-Logo-6.png" alt="Nuzzle Roast Logo">
-                </div>
-                <p>Kafe modern yang menyajikan kopi berkualitas tinggi dengan suasana yang nyaman dan hangat.</p>
+                <p>Temukan pengalaman ngopi terbaik dengan kopi berkualitas dan suasana yang nyaman di Nuzzle Roast.</p>
                 <div class="social-links">
-                    <a href="https://www.facebook.com/profile.php?id=61582411084599"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/nuzzle_roast?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-instagram"></i></a>
-                    <a href="https://x.com/NuzleRoast"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.tiktok.com/@nuzzle.roast?_t=ZS-90eHevxFeK1&_r=1"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
                 </div>
             </div>
             
@@ -1593,63 +1242,72 @@
                 <ul>
                     <li><a href="#home">Beranda</a></li>
                     <li><a href="#menu">Menu</a></li>
-                    <li><a href="#pamflet">Pamflet Menu</a></li>
-                    <li><a href="#gallery">Galeri</a></li>
-                    <li><a href="#testimonials">Testimoni</a></li>
-                    <li><a href="#order">Pesan</a></li>
                     <li><a href="#about">Tentang Kami</a></li>
+                    <li><a href="#gallery">Galeri</a></li>
                     <li><a href="#contact">Kontak</a></li>
                 </ul>
             </div>
             
             <div class="footer-contact">
-                <h3>Kontak Kami</h3>
-                <p><i class="fas fa-map-marker-alt"></i> Jl. Kopi Indah No. 55, Jakarta Selatan</p>
-                <p><i class="fas fa-phone"></i> +62 857-7914-2230</p>
-                <p><i class="fas fa-envelope"></i> nuzleroast@gmail.com</p>
-                <p><i class="fas fa-clock"></i> Senin - Minggu: 07.00 - 22.00 WIB</p>
+                <h3>Kontak</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Jl. Kopi Aroma No. 123, Jakarta</p>
+                <p><i class="fas fa-phone"></i> (021) 1234-5678</p>
+                <p><i class="fas fa-envelope"></i> info@nuzzleroast.com</p>
+                <p><i class="fas fa-clock"></i> Buka: 07.00 - 22.00 WIB</p>
             </div>
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2023 Nuzzle Roast. Semua Hak Dilindungi.</p>
+            <p>&copy; 2023 Nuzzle Roast. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Modal untuk Galeri -->
-    <div class="modal" id="galleryModal">
-        <span class="close-modal">&times;</span>
-        <div class="modal-content">
-            <img src="" alt="" class="modal-img" id="modalImg">
-        </div>
-    </div>
-
     <!-- Notifikasi -->
     <div class="notification" id="notification">
-        Pesanan berhasil dikirim!
+        <p id="notificationText">Pesanan berhasil dikirim!</p>
     </div>
 
     <script>
-        // Update waktu real-time
+        // Fungsi untuk menampilkan waktu
         function updateTime() {
             const now = new Date();
-            const options = { 
-                weekday: 'long', 
-                year: 'numeric', 
+            
+            // Format tanggal: 4 Mei 2025
+            const dateOptions = { 
+                day: 'numeric', 
                 month: 'long', 
-                day: 'numeric',
+                year: 'numeric'
+            };
+            const dateString = now.toLocaleDateString('id-ID', dateOptions);
+            
+            // Format waktu: 22:00 WIB
+            const timeOptions = {
                 hour: '2-digit',
                 minute: '2-digit',
-                second: '2-digit'
+                timeZone: 'Asia/Jakarta'
             };
-            const timeString = now.toLocaleDateString('id-ID', options);
-            document.getElementById('timeDisplay').textContent = timeString;
+            const timeString = now.toLocaleTimeString('id-ID', timeOptions) + ' WIB';
+            
+            const timeDisplayString = `${dateString} | ${timeString}`;
+            
+            // Update waktu di header
+            const timeDisplay = document.getElementById('timeDisplay');
+            if (timeDisplay) {
+                timeDisplay.textContent = timeDisplayString;
+            }
+            
+            // Update waktu di pamflet
+            const pamfletTime = document.getElementById('pamfletTime');
+            if (pamfletTime) {
+                pamfletTime.textContent = timeDisplayString;
+            }
         }
         
+        // Panggil fungsi updateTime setiap detik
         setInterval(updateTime, 1000);
-        updateTime();
+        updateTime(); // Panggil sekali saat halaman dimuat
         
-        // Header scroll effect
+        // Efek scroll header
         window.addEventListener('scroll', function() {
             const header = document.getElementById('header');
             if (window.scrollY > 50) {
@@ -1659,188 +1317,167 @@
             }
         });
         
-        // Smooth scroll untuk navigasi
-        document.querySelectorAll('nav a').forEach(anchor => {
+        // Fungsi untuk menu mobile
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('nav-menu');
+        
+        if (mobileMenuBtn && navMenu) {
+            mobileMenuBtn.addEventListener('click', function() {
+                navMenu.classList.toggle('show');
+                // Ganti ikon menu
+                const icon = this.querySelector('i');
+                if (navMenu.classList.contains('show')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        }
+        
+        // Tutup menu mobile saat mengklik link
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (navMenu.classList.contains('show')) {
+                    navMenu.classList.remove('show');
+                    // Kembalikan ikon ke burger
+                    const icon = mobileMenuBtn.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
+        
+        // Fungsi untuk smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 
                 const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
+                if (targetId === '#') return;
                 
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Fungsi untuk tombol pesan pada menu item
+        const orderButtons = document.querySelectorAll('.order-btn');
+        orderButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const item = this.getAttribute('data-item');
+                const price = this.getAttribute('data-price');
+                
+                // Scroll ke formulir pemesanan
+                document.getElementById('order').scrollIntoView({
                     behavior: 'smooth'
                 });
+                
+                // Tampilkan notifikasi
+                showNotification(`"${item}" telah ditambahkan ke pesanan Anda!`);
             });
         });
         
-        // Modal untuk galeri
-        const modal = document.getElementById('galleryModal');
-        const modalImg = document.getElementById('modalImg');
-        const closeModal = document.querySelector('.close-modal');
-        
-        document.querySelectorAll('.gallery-item').forEach(item => {
-            item.addEventListener('click', function() {
-                modal.style.display = 'flex';
-                modalImg.src = this.getAttribute('data-src');
-            });
-        });
-        
-        closeModal.addEventListener('click', function() {
-            modal.style.display = 'none';
-        });
-        
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                modal.style.display = 'none';
+        // Fungsi untuk menampilkan notifikasi
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notificationText');
+            
+            if (notification && notificationText) {
+                notificationText.textContent = message;
+                notification.classList.add('show');
+                
+                // Sembunyikan notifikasi setelah 3 detik
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 3000);
             }
-        });
+        }
         
-        // Formulir pemesanan
+        // Fungsi untuk formulir pemesanan
         const orderForm = document.getElementById('orderForm');
+        const itemsSelect = document.getElementById('items');
         const orderItems = document.getElementById('orderItems');
-        const orderSummary = document.getElementById('orderSummary');
         const orderTotal = document.getElementById('orderTotal');
         
-        function updateOrderSummary() {
-            const selectedOptions = Array.from(orderItems.selectedOptions);
-            let total = 0;
-            let summaryHTML = '';
+        if (orderForm && itemsSelect && orderItems && orderTotal) {
+            // Update ringkasan pesanan saat item dipilih
+            itemsSelect.addEventListener('change', updateOrderSummary);
             
-            if (selectedOptions.length === 0) {
-                summaryHTML = '<p>Pilih menu untuk melihat ringkasan</p>';
-            } else {
+            // Fungsi untuk memperbarui ringkasan pesanan
+            function updateOrderSummary() {
+                const selectedOptions = Array.from(itemsSelect.selectedOptions);
+                let total = 0;
+                let itemsHTML = '';
+                
                 selectedOptions.forEach(option => {
-                    const price = parseInt(option.getAttribute('data-price'));
-                    total += price;
-                    summaryHTML += `
+                    const itemName = option.value;
+                    const itemPrice = parseInt(option.getAttribute('data-price'));
+                    total += itemPrice;
+                    
+                    itemsHTML += `
                         <div class="order-item">
-                            <span>${option.value}</span>
-                            <span>Rp ${price.toLocaleString('id-ID')}</span>
+                            <span>${itemName}</span>
+                            <span>Rp ${itemPrice.toLocaleString('id-ID')}</span>
                         </div>
                     `;
                 });
+                
+                orderItems.innerHTML = itemsHTML;
+                orderTotal.textContent = `Rp ${total.toLocaleString('id-ID')}`;
             }
             
-            orderSummary.innerHTML = summaryHTML;
-            orderTotal.textContent = `Rp ${total.toLocaleString('id-ID')}`;
+            // Handle submit formulir
+            orderForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validasi form
+                const name = document.getElementById('name').value;
+                const phone = document.getElementById('phone').value;
+                const email = document.getElementById('email').value;
+                const date = document.getElementById('date').value;
+                const time = document.getElementById('time').value;
+                const selectedOptions = Array.from(itemsSelect.selectedOptions);
+                
+                if (!name || !phone || !email || !date || !time || selectedOptions.length === 0) {
+                    showNotification('Harap lengkapi semua field yang diperlukan!');
+                    return;
+                }
+                
+                // Tampilkan notifikasi sukses
+                showNotification('Pesanan Anda berhasil dikirim! Kami akan menghubungi Anda segera.');
+                
+                // Reset form
+                orderForm.reset();
+                updateOrderSummary();
+            });
         }
         
-        orderItems.addEventListener('change', updateOrderSummary);
-        
-        orderForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+        // Animasi saat scroll
+        const animateOnScroll = function() {
+            const elements = document.querySelectorAll('.menu-item');
             
-            // Simulasi pengiriman pesanan
-            const notification = document.getElementById('notification');
-            notification.textContent = 'Pesanan berhasil dikirim!';
-            notification.classList.add('show');
-            
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 3000);
-            
-            // Reset form
-            orderForm.reset();
-            updateOrderSummary();
-        });
-        
-        // Tombol pesan di menu
-        document.querySelectorAll('.order-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const itemName = this.getAttribute('data-item');
-                const itemPrice = this.getAttribute('data-price');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
                 
-                // Scroll ke formulir pemesanan
-                document.getElementById('order').scrollIntoView({ behavior: 'smooth' });
-                
-                // Pilih item di dropdown
-                const options = Array.from(orderItems.options);
-                const optionIndex = options.findIndex(option => option.value === itemName);
-                
-                if (optionIndex !== -1) {
-                    orderItems.options[optionIndex].selected = true;
-                    updateOrderSummary();
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.style.opacity = "1";
+                    element.style.transform = "translateY(0)";
                 }
             });
-        });
-        
-        // Form kontak
-        document.getElementById('messageForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Simulasi pengiriman pesan
-            const notification = document.getElementById('notification');
-            notification.textContent = 'Pesan berhasil dikirim!';
-            notification.classList.add('show');
-            
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 3000);
-            
-            // Reset form
-            this.reset();
-        });
-        
-        // Animasi saat scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
         };
         
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-        
-        // Observ elemen yang perlu animasi
-        document.querySelectorAll('.menu-item, .testimonial-card').forEach(el => {
-            observer.observe(el);
-        });
-        
-        // Mobile menu functionality
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const nav = document.querySelector('nav ul');
-        
-        mobileMenuBtn.addEventListener('click', function() {
-            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
-            nav.style.flexDirection = 'column';
-            nav.style.position = 'absolute';
-            nav.style.top = '100%';
-            nav.style.left = '0';
-            nav.style.right = '0';
-            nav.style.backgroundColor = 'rgba(245, 245, 220, 0.95)';
-            nav.style.backdropFilter = 'blur(10px)';
-            nav.style.padding = '1rem';
-            nav.style.gap = '1rem';
-        });
-        
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', function() {
-                if (window.innerWidth <= 768) {
-                    nav.style.display = 'none';
-                }
-            });
-        });
-        
-        // Handle window resize
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 768) {
-                nav.style.display = 'flex';
-                nav.style.flexDirection = 'row';
-                nav.style.position = 'static';
-                nav.style.backgroundColor = 'transparent';
-                nav.style.backdropFilter = 'none';
-                nav.style.padding = '0';
-            } else {
-                nav.style.display = 'none';
-            }
-        });
+        window.addEventListener('scroll', animateOnScroll);
+        // Panggil sekali saat halaman dimuat
+        animateOnScroll();
     </script>
 </body>
 </html>
