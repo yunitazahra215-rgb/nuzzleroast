@@ -66,12 +66,17 @@
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            background-color: transparent;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 1.5rem;
+            overflow: hidden;
+        }
+        
+        .logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
         
         .logo-text {
@@ -1062,7 +1067,7 @@
     <header id="header">
         <div class="logo">
             <div class="logo-img">
-                <i class="fas fa-coffee"></i>
+                <img src="https://i.ibb.co.com/4R846vsQ/Blue-and-Beige-Simple-Cute-Typographic-Coffee-Cup-Cafe-Logo-6.png" alt="Nuzzle Roast Logo">
             </div>
             <div class="logo-text">NUZZLE <span>ROAST</span></div>
         </div>
@@ -1679,6 +1684,7 @@
             
             // Simulasi pengiriman pesanan
             const notification = document.getElementById('notification');
+            notification.textContent = 'Pesanan berhasil dikirim!';
             notification.classList.add('show');
             
             setTimeout(() => {
@@ -1745,6 +1751,46 @@
         // Observ elemen yang perlu animasi
         document.querySelectorAll('.menu-item, .testimonial-card').forEach(el => {
             observer.observe(el);
+        });
+        
+        // Mobile menu functionality
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav ul');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+            nav.style.flexDirection = 'column';
+            nav.style.position = 'absolute';
+            nav.style.top = '100%';
+            nav.style.left = '0';
+            nav.style.right = '0';
+            nav.style.backgroundColor = 'rgba(245, 245, 220, 0.95)';
+            nav.style.backdropFilter = 'blur(10px)';
+            nav.style.padding = '1rem';
+            nav.style.gap = '1rem';
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    nav.style.display = 'none';
+                }
+            });
+        });
+        
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                nav.style.display = 'flex';
+                nav.style.flexDirection = 'row';
+                nav.style.position = 'static';
+                nav.style.backgroundColor = 'transparent';
+                nav.style.backdropFilter = 'none';
+                nav.style.padding = '0';
+            } else {
+                nav.style.display = 'none';
+            }
         });
     </script>
 </body>
