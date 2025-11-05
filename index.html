@@ -719,6 +719,98 @@
             background-position: center;
             box-shadow: var(--shadow);
         }
+
+        /* Testimoni Section */
+        .testimonials {
+            background-color: white;
+            padding: 5rem 5%;
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial-card {
+            background-color: var(--secondary-color);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .testimonial-card:nth-child(1) { animation-delay: 0.1s; }
+        .testimonial-card:nth-child(2) { animation-delay: 0.2s; }
+        .testimonial-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .testimonial-quote {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            position: relative;
+        }
+
+        .testimonial-quote::before {
+            content: """;
+            font-size: 4rem;
+            color: var(--primary-color);
+            position: absolute;
+            top: -1.5rem;
+            left: -0.5rem;
+            opacity: 0.2;
+            font-family: Georgia, serif;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+            border: 3px solid var(--primary-color);
+        }
+
+        .testimonial-info h4 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.3rem;
+        }
+
+        .testimonial-info p {
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        .testimonial-rating {
+            color: var(--accent-color);
+            margin-top: 0.5rem;
+        }
         
         /* Contact Section */
         .contact {
@@ -943,6 +1035,10 @@
             .order-form-container {
                 padding: 2rem 1.5rem;
             }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
         }
         
         @media (max-width: 576px) {
@@ -1010,7 +1106,6 @@
                 <li><a href="#home">Beranda</a></li>
                 <li><a href="#menu">Menu</a></li>
                 <li><a href="#pamflet">Pamflet Menu</a></li>
-                <li><a href="#gallery">Galeri</a></li>
                 <li><a href="#testimonials">Testimoni</a></li>
                 <li><a href="#order">Pesan</a></li>
                 <li><a href="#about">Tentang Kami</a></li>
@@ -1159,6 +1254,79 @@
         </div>
     </section>
 
+    <!-- Testimoni Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="section-title">
+            <h2>Apa Kata Pelanggan Kami</h2>
+        </div>
+        <div class="testimonials-container">
+            <div class="testimonials-grid">
+                <!-- Testimoni 1 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">
+                        "Kopi di Nuzzle Roast benar-benar istimewa! Rasa Espresso mereka sangat autentik dan nikmat. Suasana cafe-nya juga sangat nyaman untuk bekerja atau sekadar bersantai."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80');"></div>
+                        <div class="testimonial-info">
+                            <h4>Rizki Pratama</h4>
+                            <p>Freelance Designer</p>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimoni 2 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">
+                        "Waffle Ice Cream di sini adalah yang terbaik yang pernah saya coba! Kombinasi waffle yang renyah dengan ice cream yang lembut sungguh sempurna. Pelayanannya juga ramah dan cepat."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar" style="background-image: url('https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80');"></div>
+                        <div class="testimonial-info">
+                            <h4>Sari Dewi</h4>
+                            <p>Mahasiswa</p>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimoni 3 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">
+                        "Nuzzle Roast telah menjadi tempat favorit saya untuk meeting klien. Menu makanan dan minumannya lengkap, harganya terjangkau, dan yang paling penting, kualitasnya konsisten."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar" style="background-image: url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
+                        <div class="testimonial-info">
+                            <h4>Budi Santoso</h4>
+                            <p>Business Owner</p>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Formulir Pemesanan -->
     <section class="order-form-section" id="order">
         <div class="section-title">
@@ -1230,10 +1398,10 @@
                 <div class="footer-logo">NUZZLE <span>ROAST</span></div>
                 <p>Temukan pengalaman ngopi terbaik dengan kopi berkualitas dan suasana yang nyaman di Nuzzle Roast.</p>
                 <div class="social-links">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.instagram.com/reel/DP8a6CPEfEQ/?igsh=aWpjbngyd3owMW81"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61582411084599"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/NuzleRoast"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.tiktok.com/@nuzzle.roast?_t=ZS-90eHevxFeK1&_r=1"><i class="fab fa-tiktok"></i></a>
                 </div>
             </div>
             
@@ -1462,7 +1630,7 @@
         
         // Animasi saat scroll
         const animateOnScroll = function() {
-            const elements = document.querySelectorAll('.menu-item');
+            const elements = document.querySelectorAll('.menu-item, .testimonial-card');
             
             elements.forEach(element => {
                 const elementTop = element.getBoundingClientRect().top;
